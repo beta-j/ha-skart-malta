@@ -6,7 +6,7 @@
   "issue_tracker": "https://github.com/beta-j/ha-skart-malta/issues",
   "codeowners": ["@beta-j"],
   "config_flow": true,
-  "iot_class": "calculate",
+  "iot_class": "calculated",
   "integration_type": "service",
   "requirements": []
 }
