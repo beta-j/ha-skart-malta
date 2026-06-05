@@ -1,0 +1,12 @@
+{
+  "domain": "skart_malta",
+  "name": "Skart Malta",
+  "version": "1.0.0",
+  "documentation": "https://github.com/beta-j/ha-skart-malta",
+  "issue_tracker": "https://github.com/beta-j/ha-skart-malta/issues",
+  "codeowners": ["@beta-j"],
+  "config_flow": true,
+  "iot_class": "calculate",
+  "integration_type": "service",
+  "requirements": []
+}

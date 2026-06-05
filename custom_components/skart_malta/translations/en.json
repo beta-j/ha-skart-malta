@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Skart Malta",
+        "description": "The weekday schedule is the national standard. Configure the glass schedule and your local collection time.",
+        "data": {
+          "name": "Name",
+          "collection_time": "Collection time",
+          "glass_weekday": "Glass collection day",
+          "glass_weeks": "Glass collection weeks of the month"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "This name is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Skart Malta options",
+        "data": {
+          "name": "Name",
+          "collection_time": "Collection time",
+          "glass_weekday": "Glass collection day",
+          "glass_weeks": "Glass collection weeks of the month"
+        }
+      }
+    }
+  }
+}
