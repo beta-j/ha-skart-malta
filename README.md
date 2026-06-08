@@ -38,7 +38,7 @@ Glass is collected on configurable Fridays of the month (default: 1st and 3rd).
 - `sensor.skart_malta_next_glass_collection` — date of next glass day
 - `binary_sensor.skart_malta_glass_day_today` — on when glass is collected today
 
-Each day sensor exposes `streams`, `date`, and `is_glass_day` attributes, which the companion card reads.
+Each day sensor exposes `streams`, `date`, `is_glass_day`, and `collection_time` attributes, which the companion card reads.
 
 ## Configuration options
 

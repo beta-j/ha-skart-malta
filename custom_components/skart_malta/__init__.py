@@ -11,8 +11,10 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
 from .const import (
+    CONF_COLLECTION_TIME,
     CONF_GLASS_WEEKDAY,
     CONF_GLASS_WEEKS,
+    DEFAULT_COLLECTION_TIME,
     DEFAULT_GLASS_WEEKDAY,
     DEFAULT_GLASS_WEEKS,
     DOMAIN,
@@ -40,16 +42,17 @@ class MaltaWasteCoordinator(DataUpdateCoordinator):
         )
         self.entry = entry
 
-    def _options(self) -> tuple[int, list[int]]:
+    def _options(self) -> tuple[int, list[int], str]:
         data = {**self.entry.data, **self.entry.options}
         weekday = data.get(CONF_GLASS_WEEKDAY, DEFAULT_GLASS_WEEKDAY)
         weeks = data.get(CONF_GLASS_WEEKS, DEFAULT_GLASS_WEEKS)
         # Options may come back as strings from the UI selector.
         weeks = [int(w) for w in weeks]
-        return int(weekday), weeks
+        collection_time = data.get(CONF_COLLECTION_TIME, DEFAULT_COLLECTION_TIME)
+        return int(weekday), weeks, collection_time
 
     async def _async_update_data(self) -> dict:
-        weekday, weeks = self._options()
+        weekday, weeks, collection_time = self._options()
         today = date.today()
         tomorrow = today + timedelta(days=1)
         return {
@@ -57,6 +60,7 @@ class MaltaWasteCoordinator(DataUpdateCoordinator):
             "tomorrow": streams_for_date(tomorrow, weekday, weeks),
             "today_date": today.isoformat(),
             "tomorrow_date": tomorrow.isoformat(),
+            "collection_time": collection_time,
             "next_glass": (
                 d.isoformat()
                 if (d := next_glass_date(today, weekday, weeks))

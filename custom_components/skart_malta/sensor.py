@@ -78,6 +78,7 @@ class MaltaWasteDaySensor(CoordinatorEntity, SensorEntity):
             "streams": streams,
             "date": self.coordinator.data[f"{self._key}_date"],
             "is_glass_day": "glass" in streams,
+            "collection_time": self.coordinator.data.get("collection_time"),
         }
 
 
